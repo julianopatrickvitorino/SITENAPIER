@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAPIER Pizzaria - A Melhor de SJP</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#08090C',
+              panel: '#12141C',
+              card: '#1B1E29',
+              red: '#D9383A',
+              orange: '#FF5E36',
+              yellow: '#FFB800',
+              success: '#10B981',
+              accent: '#3B82F6'
+            }
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles for Premium Experience -->
+  <style>
+    body {
+      background-color: #08090C;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #12141C;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #FF5E36;
+      border-radius: 3px;
+    }
+    .glow-orange {
+      box-shadow: 0 0 20px rgba(255, 94, 54, 0.25);
+    }
+    .glow-green {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+    }
+    .half-left-fill {
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+    .half-right-fill {
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+  </style>
+</head>
+
+<body class="text-gray-100 antialiased custom-scrollbar">
+
+<!-- AVISO DE FUNCIONAMENTO (BANNER TOPO) -->
+<div id="store-banner" class="bg-brand-orange text-white py-2.5 px-4 text-center font-bold text-sm sticky top-0 z-50 shadow-md flex justify-center items-center gap-2 transition-all duration-300">
+  <span class="inline-block w-2.5 h-2.5 rounded-full bg-white animate-pulse" id="store-dot"></span>
+  <span id="store-status-text">Verificando horário de funcionamento...</span>
+</div>
+
+<!-- HEADER (GLASSMORPHISM) -->
+<header class="bg-brand-dark/80 backdrop-blur-md sticky top-10 z-40 border-b border-white/5 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    
+    <a href="#" class="flex items-center gap-2 group">
+      <img src="logonapier.png" alt="NAPIER Logo" class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105 duration-300">
+    </a>
+
+    <!-- AÇÕES HEADER -->
+    <div class="flex items-center gap-4">
+      <a href="tel:5541988449949" class="hidden md:flex items-center gap-2 text-sm text-gray-400 hover:text-white transition">
+        <span>📞 (41) 98844-9949</span>
+      </a>
+      
+      <!-- BOTÃO CARRINHO FLUTUANTE -->
+      <button onclick="toggleCartDrawer(true)" class="relative bg-brand-card hover:bg-brand-card/80 border border-white/10 px-4 py-2.5 rounded-full flex items-center gap-2 text-white font-bold transition glow-orange">
+        <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+        </svg>
+        <span class="hidden sm:inline">Meu Carrinho</span>
+        <span id="cart-badge-count" class="bg-brand-red text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO HERO (O SHOWROOM DE VENDAS) -->
+<section class="relative bg-gradient-to-b from-brand-panel via-brand-dark to-brand-dark py-16 md:py-24 border-b border-white/5 overflow-hidden">
+  <!-- Glowing Background Orbs -->
+  <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-yellow/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center relative z-10">
+    
+    <!-- CONTEXTO E COPYWRITING -->
+    <div class="md:col-span-7 space-y-6 text-center md:text-left">
+      <span class="bg-brand-orange/10 border border-brand-orange/30 text-brand-orange px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase inline-block animate-bounce">
+        🚀 Entrega Recorde em SJP
+      </span>
+      
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black font-outfit text-white leading-tight">
+        Sua <span class="text-brand-orange">NAPIER</span> quentinha na sua casa! 🍕
+      </h2>
+      
+      <p class="text-lg text-gray-400 font-medium max-w-xl">
+        "O segredo está na massa, o prazer está no recheio." Pizzas artesanais assadas no ponto perfeito, com entrega ultrarrápida ou retirada rápida em 35 minutos!
+      </p>
+
+      <!-- METADADOS DE VELOCIDADE -->
+      <div class="grid grid-cols-2 gap-4 max-w-md mx-auto md:mx-0 pt-2">
+        <div class="bg-brand-card/60 border border-white/5 p-4 rounded-2xl flex items-center gap-3">
+          <span class="text-3xl">🚗</span>
+          <div>
+            <p class="text-xs text-gray-400 font-semibold uppercase">Entrega em Casa</p>
+            <p class="text-sm font-black text-white" id="delivery-timer">58 - 80 min</p>
+          </div>
+        </div>
+        
+        <div class="bg-brand-card/60 border border-white/5 p-4 rounded-2xl flex items-center gap-3">
+          <span class="text-3xl">🏁</span>
+          <div>
+            <p class="text-xs text-gray-400 font-semibold uppercase">Retirada no Balcão</p>
+            <p class="text-sm font-black text-white">35 minutos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+        <a href="#cardapio" class="bg-gradient-to-r from-brand-orange to-brand-red hover:to-brand-orange text-white font-black px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition duration-300 flex items-center gap-3 w-full sm:w-auto justify-center glow-orange">
+          <span>🍕 FAZER PEDIDO AGORA</span>
+        </a>
+        <a href="https://wa.me/5541988449949" target="_blank" class="bg-brand-card hover:bg-brand-card/80 border border-white/10 text-gray-300 hover:text-white px-8 py-4 rounded-full text-lg font-bold transition w-full sm:w-auto text-center">
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- PROMOÇÕES & COMBOS DE CRO -->
+    <div class="md:col-span-5 space-y-6">
+      
+      <!-- COMBO 1 -->
+      <div class="bg-gradient-to-r from-brand-red/90 to-brand-orange/90 rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition duration-300">
+        <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl group-hover:scale-110 transition duration-300 pointer-events-none">🍕</div>
+        <span class="bg-brand-yellow text-black px-3 py-1 rounded-full text-xs font-black uppercase">
+          🔥 COMBO MAIS VENDIDO
+        </span>
+        <h3 class="text-2xl font-black font-outfit mt-4 text-white">Pizza Grande + Refri 2L</h3>
+        <p class="text-sm text-white/80 mt-1">Sabores clássicos com borda recheada de requeijão inclusa.</p>
+        <div class="flex justify-between items-end mt-6">
+          <div>
+            <span class="text-xs line-through text-white/60">De R$ 58,90</span>
+            <div class="text-3xl font-black text-white font-outfit">R$ 49,90</div>
+          </div>
+          <button onclick="openComboCustomizer('combo1')" class="bg-white hover:bg-brand-yellow text-brand-red font-black px-5 py-2.5 rounded-full text-sm transition-colors shadow">
+            Aproveitar Promo
+          </button>
+        </div>
+      </div>
+
+      <!-- COMBO 2 -->
+      <div class="bg-gradient-to-r from-brand-card to-brand-panel border border-brand-orange/20 rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition duration-300">
+        <div class="absolute -right-10 -bottom-10 opacity-5 text-9xl group-hover:scale-110 transition duration-300 pointer-events-none">🥤</div>
+        <span class="bg-brand-orange text-white px-3 py-1 rounded-full text-xs font-black uppercase">
+          👪 COMBO FAMÍLIA
+        </span>
+        <h3 class="text-2xl font-black font-outfit mt-4 text-white">2 Pizzas Grandes + Kuat 2L</h3>
+        <p class="text-sm text-gray-400 mt-1">Sabores selecionados para alegrar a galera no final de semana.</p>
+        <div class="flex justify-between items-end mt-6">
+          <div>
+            <span class="text-xs line-through text-gray-500">De R$ 84,90</span>
+            <div class="text-3xl font-black text-brand-orange font-outfit">R$ 69,90</div>
+          </div>
+          <button onclick="openComboCustomizer('combo2')" class="bg-brand-orange hover:bg-brand-orange/80 text-white font-black px-5 py-2.5 rounded-full text-sm transition shadow">
+            Aproveitar Promo
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- RETIRADA RÁPIDA BANNER -->
+<section class="py-6 bg-brand-panel border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+    <div class="flex items-center gap-3">
+      <span class="text-3xl">🚗</span>
+      <div>
+        <h4 class="font-bold text-white text-lg">Retirada rápida sem filas!</h4>
+        <p class="text-sm text-gray-400">Av. Castro Alves, 589 - Boneca do Iguaçu, SJP</p>
+      </div>
+    </div>
+    <span class="bg-brand-success/15 border border-brand-success/30 text-brand-success px-4 py-2 rounded-full font-black text-sm">
+      Pronto em apenas 35 minutos 🚀
+    </span>
+  </div>
+</section>
+
+<!-- SEÇÃO CARDÁPIO -->
+<section id="cardapio" class="py-20 relative">
+  <div class="max-w-7xl mx-auto px-4">
+    
+    <div class="text-center space-y-4 mb-12">
+      <h2 class="text-4xl md:text-5xl font-black font-outfit text-white">Nosso Cardápio 🍕</h2>
+      <p class="text-gray-400 max-w-lg mx-auto">
+        Tudo preparado na hora com ingredientes frescos selecionados. Escolha o seu tamanho e configure como preferir!
+      </p>
+    </div>
+
+    <!-- ABAS CATEGORIAS -->
+    <div class="flex overflow-x-auto gap-3 pb-6 mb-8 justify-start md:justify-center no-scrollbar">
+      <button onclick="filterCategory('all')" id="tab-all" class="category-tab bg-brand-orange text-white font-bold px-6 py-3 rounded-full transition shadow-md whitespace-nowrap">
+        Todos os Sabores
+      </button>
+      <button onclick="filterCategory('alho_oleo')" id="tab-alho_oleo" class="category-tab bg-brand-card hover:bg-brand-card/80 border border-white/5 text-gray-400 font-bold px-6 py-3 rounded-full transition whitespace-nowrap">
+        🧄 Alho e Óleo
+      </button>
+      <button onclick="filterCategory('classicas')" id="tab-classicas" class="category-tab bg-brand-card hover:bg-brand-card/80 border border-white/5 text-gray-400 font-bold px-6 py-3 rounded-full transition whitespace-nowrap">
+        🍕 Clássicas
+      </button>
+      <button onclick="filterCategory('especiais')" id="tab-especiais" class="category-tab bg-brand-card hover:bg-brand-card/80 border border-white/5 text-gray-400 font-bold px-6 py-3 rounded-full transition whitespace-nowrap">
+        ⭐ Especiais
+      </button>
+      <button onclick="filterCategory('vegetarianas')" id="tab-vegetarianas" class="category-tab bg-brand-card hover:bg-brand-card/80 border border-white/5 text-gray-400 font-bold px-6 py-3 rounded-full transition whitespace-nowrap">
+        🥦 Vegetarianas
+      </button>
+      <button onclick="filterCategory('doces')" id="tab-doces" class="category-tab bg-brand-card hover:bg-brand-card/80 border border-white/5 text-gray-400 font-bold px-6 py-3 rounded-full transition whitespace-nowrap">
+        🍫 Doces
+      </button>
+    </div>
+
+    <!-- GRID DE SABORES -->
+    <div id="flavors-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- RENDERIZADO DINAMICAMENTE -->
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL DO CONFIGURADOR DE PIZZA (DOMINO'S STYLE) -->
+<div id="config-modal" class="fixed inset-0 bg-brand-dark/95 z-50 flex items-center justify-center p-4 backdrop-blur-md hidden transition-all duration-300">
+  <div class="bg-brand-panel border border-white/10 rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden shadow-2xl relative">
+    
+    <!-- Header Modal -->
+    <div class="p-6 border-b border-white/5 flex justify-between items-center bg-brand-card">
+      <div>
+        <h3 id="modal-title" class="text-2xl font-black font-outfit text-white">Montar Pizza</h3>
+        <p class="text-xs text-gray-400 mt-1 font-semibold uppercase tracking-wider">Configure seu sabor e adicionais abaixo</p>
+      </div>
+      <button onclick="toggleConfigModal(false)" class="text-gray-400 hover:text-white p-2 bg-brand-panel hover:bg-brand-panel/80 rounded-full border border-white/5 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Conteúdo Modal (Scrollable) -->
+    <div class="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
+
+      <div class="grid md:grid-cols-12 gap-8 items-start">
+        
+        <!-- VISUALIZAÇÃO INTERATIVA DA PIZZA -->
+        <div class="md:col-span-5 flex flex-col items-center justify-center space-y-4 sticky top-0">
+          <div class="relative w-64 h-64 rounded-full border-4 border-dashed border-white/10 flex items-center justify-center overflow-hidden bg-orange-950/10">
+            <!-- Pizza Visual Core -->
+            <div class="absolute inset-2 bg-[url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300')] bg-cover bg-center rounded-full opacity-35" id="pizza-visual-base"></div>
+            <!-- Half Indicators -->
+            <div id="visual-half-left" class="absolute inset-2 bg-brand-orange/40 half-left-fill border-r-2 border-white/30 hidden"></div>
+            <div id="visual-half-right" class="absolute inset-2 bg-brand-yellow/40 half-right-fill hidden"></div>
+            
+            <span class="absolute text-7xl select-none" id="pizza-emoji">🍕</span>
+          </div>
+
+          <div class="text-center">
+            <span id="pizza-summary-size" class="text-sm font-black bg-brand-orange/10 text-brand-orange border border-brand-orange/30 px-3 py-1 rounded-full uppercase tracking-wider">Tamanho Grande</span>
+            <p id="pizza-summary-flavors" class="text-xs text-gray-400 mt-2 font-medium">Personalize os sabores nas abas ao lado</p>
+          </div>
+        </div>
+
+        <!-- FORMULÁRIO DE CUSTOMIZAÇÃO -->
+        <div class="md:col-span-7 space-y-6">
+          
+          <!-- 1. ESCOLHA O TAMANHO -->
+          <div class="space-y-3">
+            <label class="text-sm font-black uppercase text-gray-400 tracking-wider">1. Escolha o Tamanho</label>
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Broto -->
+              <label class="relative bg-brand-card hover:bg-brand-card/80 border-2 border-white/10 rounded-2xl p-4 cursor-pointer flex justify-between items-center transition select-none" id="size-broto-card">
+                <input type="radio" name="pizza-size" value="broto" class="absolute top-4 right-4 text-brand-orange focus:ring-0" onchange="onSizeChange('broto')">
+                <div class="space-y-1">
+                  <p class="font-black text-white text-lg">Broto (30cm)</p>
+                  <p class="text-xs text-gray-400">1 Sabor • R$ 28,90</p>
+                </div>
+              </label>
+
+              <!-- Grande -->
+              <label class="relative bg-brand-card hover:bg-brand-card/80 border-2 border-brand-orange rounded-2xl p-4 cursor-pointer flex justify-between items-center transition select-none" id="size-grande-card">
+                <input type="radio" name="pizza-size" value="grande" checked class="absolute top-4 right-4 text-brand-orange focus:ring-0" onchange="onSizeChange('grande')">
+                <div class="space-y-1">
+                  <p class="font-black text-white text-lg">Grande (35cm)</p>
+                  <p class="text-xs text-gray-400">Até 2 Sabores • R$ 38,90</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 2. SELEÇÃO DE SABORES (DINÂMICO PARA MEIO-A-MEIO) -->
+          <div class="space-y-3" id="flavor-selectors-wrapper">
+            <label class="text-sm font-black uppercase text-gray-400 tracking-wider">2. Selecione os Sabores</label>
+            
+            <div class="space-y-4">
+              <!-- SABOR 1 (OU ÚNICO) -->
+              <div class="space-y-1.5">
+                <span class="text-xs font-semibold text-gray-400" id="label-flavor-1">Sabor Metade 1 (Esq.)</span>
+                <select id="select-flavor-1" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" onchange="updatePizzaVisuals()"></select>
+              </div>
+
+              <!-- SABOR 2 (ESCONDIDO SE FOR BROTO) -->
+              <div class="space-y-1.5" id="wrapper-flavor-2">
+                <span class="text-xs font-semibold text-gray-400">Sabor Metade 2 (Dir.)</span>
+                <select id="select-flavor-2" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" onchange="updatePizzaVisuals()"></select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. UPSELL DE BORDA (O GERADOR DE TICKET MÉDIO) -->
+          <div class="space-y-3 bg-brand-card/40 border border-white/5 p-5 rounded-2xl">
+            <div class="flex justify-between items-center">
+              <label class="text-sm font-black uppercase text-brand-orange tracking-wider">⚡ 3. Deixe sua pizza absurda!</label>
+              <span class="bg-brand-orange/15 text-brand-orange text-xs font-black px-2.5 py-1 rounded-full uppercase">Upsell</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <label class="bg-brand-card border border-white/10 hover:border-brand-orange rounded-xl p-3 cursor-pointer flex justify-between items-center transition select-none text-xs">
+                <div class="flex items-center gap-2">
+                  <input type="radio" name="pizza-crust" value="tradicional" checked class="text-brand-orange focus:ring-0" onchange="updatePizzaPrice()">
+                  <span class="font-bold text-white">Massa Tradicional</span>
+                </div>
+                <span class="text-gray-400">Grátis</span>
+              </label>
+
+              <label class="bg-brand-card border border-white/10 hover:border-brand-orange rounded-xl p-3 cursor-pointer flex justify-between items-center transition select-none text-xs">
+                <div class="flex items-center gap-2">
+                  <input type="radio" name="pizza-crust" value="requeijao" class="text-brand-orange focus:ring-0" onchange="updatePizzaPrice()">
+                  <span class="font-bold text-white">Borda Requeijão</span>
+                </div>
+                <span class="text-brand-yellow font-black">+R$ 12,90</span>
+              </label>
+
+              <label class="bg-brand-card border border-white/10 hover:border-brand-orange rounded-xl p-3 cursor-pointer flex justify-between items-center transition select-none text-xs">
+                <div class="flex items-center gap-2">
+                  <input type="radio" name="pizza-crust" value="cheddar" class="text-brand-orange focus:ring-0" onchange="updatePizzaPrice()">
+                  <span class="font-bold text-white">Borda Cheddar</span>
+                </div>
+                <span class="text-brand-yellow font-black">+R$ 12,90</span>
+              </label>
+
+              <label class="bg-brand-card border border-white/10 hover:border-brand-orange rounded-xl p-3 cursor-pointer flex justify-between items-center transition select-none text-xs">
+                <div class="flex items-center gap-2">
+                  <input type="radio" name="pizza-crust" value="chocolate" class="text-brand-orange focus:ring-0" onchange="updatePizzaPrice()">
+                  <span class="font-bold text-white">Borda Chocolate</span>
+                </div>
+                <span class="text-brand-yellow font-black">+R$ 13,90</span>
+              </label>
+
+              <label class="bg-brand-card border border-white/10 hover:border-brand-orange rounded-xl p-3 cursor-pointer flex justify-between items-center transition select-none text-xs sm:col-span-2">
+                <div class="flex items-center gap-2">
+                  <input type="radio" name="pizza-crust" value="doce_leite" class="text-brand-orange focus:ring-0" onchange="updatePizzaPrice()">
+                  <span class="font-bold text-white">Borda Doce de Leite</span>
+                </div>
+                <span class="text-brand-yellow font-black">+R$ 13,90</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Rodapé Modal (Totalizer e Add) -->
+    <div class="p-6 border-t border-white/5 bg-brand-card flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="text-center sm:text-left">
+        <span class="text-xs text-gray-400 font-semibold uppercase">Valor Total Estimado</span>
+        <div class="text-4xl font-black text-brand-yellow font-outfit" id="modal-total-price">R$ 38,90</div>
+      </div>
+
+      <button onclick="addCustomPizzaToCart()" class="w-full sm:w-auto bg-gradient-to-r from-brand-orange to-brand-red hover:to-brand-orange text-white font-black px-8 py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg glow-orange">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>ADICIONAR AO CARRINHO</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- GAVETA LATERAL DO CARRINHO (DRAWER) -->
+<div id="cart-drawer" class="fixed inset-0 bg-brand-dark/80 backdrop-blur-sm z-50 transition-all duration-300 hidden">
+  <div class="absolute inset-y-0 right-0 w-full max-w-lg bg-brand-panel border-l border-white/10 flex flex-col shadow-2xl overflow-hidden">
+    
+    <!-- Header Drawer -->
+    <div class="p-6 border-b border-white/5 flex justify-between items-center bg-brand-card">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🛒</span>
+        <h3 class="text-xl font-black font-outfit text-white">Seu Pedido</h3>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="text-gray-400 hover:text-white p-2 bg-brand-panel hover:bg-brand-panel/80 rounded-full border border-white/5 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Lista de Itens do Carrinho -->
+    <div class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar" id="cart-items-list">
+      <!-- RENDERIZADO DINAMICAMENTE OU ESTADO DE CARRINHO VAZIO -->
+    </div>
+
+    <!-- RESUMO DO PEDIDO E CHECKOUT -->
+    <div class="p-6 border-t border-white/5 bg-brand-card space-y-4">
+      
+      <!-- Lógica de Entrega/Retirada -->
+      <div class="grid grid-cols-2 gap-2 bg-brand-panel p-1 rounded-xl border border-white/5">
+        <button onclick="setDeliveryType('entrega')" id="btn-delivery-entrega" class="py-2.5 rounded-lg text-sm font-black transition uppercase bg-brand-orange text-white">
+          🚀 Entrega
+        </button>
+        <button onclick="setDeliveryType('retirada')" id="btn-delivery-retirada" class="py-2.5 rounded-lg text-sm font-black transition uppercase text-gray-400 hover:text-white">
+          🚗 Retirada
+        </button>
+      </div>
+
+      <!-- Resumo Valores -->
+      <div class="space-y-1.5 text-sm border-b border-white/5 pb-3">
+        <div class="flex justify-between text-gray-400">
+          <span>Subtotal</span>
+          <span id="cart-summary-subtotal">R$ 0,00</span>
+        </div>
+        <div class="flex justify-between text-gray-400" id="shipping-row">
+          <span>Taxa de Entrega</span>
+          <span id="cart-summary-shipping">R$ 5,00</span>
+        </div>
+        <div class="flex justify-between text-brand-orange font-bold hidden" id="discount-row">
+          <span>Desconto PIX</span>
+          <span id="cart-summary-discount">-R$ 2,00</span>
+        </div>
+        <div class="flex justify-between text-white font-black text-lg pt-1">
+          <span>Valor Total</span>
+          <span id="cart-summary-total" class="text-brand-yellow font-outfit text-2xl">R$ 0,00</span>
+        </div>
+      </div>
+
+      <!-- Checkout Form Trigger -->
+      <button onclick="openCheckoutSection()" id="btn-goto-checkout" class="w-full bg-gradient-to-r from-brand-orange to-brand-red hover:to-brand-orange text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 transition glow-orange">
+        <span>FINALIZAR COMPRA</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL CHECKOUT & DADOS DE ENTREGA -->
+<div id="checkout-modal" class="fixed inset-0 bg-brand-dark/95 z-50 flex items-center justify-center p-4 backdrop-blur-md hidden transition-all duration-300">
+  <div class="bg-brand-panel border border-white/10 rounded-3xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden shadow-2xl relative">
+    
+    <div class="p-6 border-b border-white/5 flex justify-between items-center bg-brand-card">
+      <div>
+        <h3 class="text-2xl font-black font-outfit text-white flex items-center gap-2">
+          <span>📝</span> Detalhes do Pedido
+        </h3>
+        <p class="text-xs text-gray-400 mt-1 font-semibold uppercase tracking-wider">Preencha com cuidado para a melhor entrega de SJP</p>
+      </div>
+      <button onclick="toggleCheckoutModal(false)" class="text-gray-400 hover:text-white p-2 bg-brand-panel hover:bg-brand-panel/80 rounded-full border border-white/5 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- FORMULÁRIO DE CHECKOUT (Scrollable) -->
+    <form id="form-checkout" onsubmit="submitOrder(event)" class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+      
+      <!-- DADOS PESSOAIS -->
+      <div class="space-y-4">
+        <h4 class="text-sm font-black text-brand-orange uppercase tracking-wider">1. Quem vai receber?</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label class="text-xs font-semibold text-gray-400">Nome Completo</label>
+            <input type="text" id="cust-name" required class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" placeholder="Ex: João da Silva">
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-xs font-semibold text-gray-400">WhatsApp (DDD + Celular)</label>
+            <input type="text" id="cust-phone" required class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" placeholder="Ex: (41) 98888-8888" oninput="formatWhatsApp(this)">
+          </div>
+        </div>
+      </div>
+
+      <!-- ENDEREÇO DE ENTREGA (CONDICIONAL) -->
+      <div class="space-y-4" id="address-fields-wrapper">
+        <h4 class="text-sm font-black text-brand-orange uppercase tracking-wider">2. Onde devemos entregar?</h4>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+          
+          <!-- Seletor Inteligente de Bairros -->
+          <div class="space-y-1.5 sm:col-span-12">
+            <label class="text-xs font-semibold text-gray-400">Bairro (Disponível em SJP)</label>
+            <select id="cust-neighborhood" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" onchange="calculateDynamicShipping()">
+              <option value="boneca_iguacu">Boneca do Iguaçu - Taxa R$ 5,00</option>
+              <option value="centro">Centro - Taxa R$ 6,50</option>
+              <option value="afonso_pena">Afonso Pena - Taxa R$ 7,00</option>
+              <option value="guatupe">Guatupê - Taxa R$ 8,50</option>
+              <option value="outros">Outros bairros SJP - Taxa R$ 10,00</option>
+            </select>
+          </div>
+
+          <div class="space-y-1.5 sm:col-span-8">
+            <label class="text-xs font-semibold text-gray-400">Rua / Avenida</label>
+            <input type="text" id="cust-street" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" placeholder="Ex: Av. Castro Alves">
+          </div>
+
+          <div class="space-y-1.5 sm:col-span-4">
+            <label class="text-xs font-semibold text-gray-400">Número</label>
+            <input type="text" id="cust-number" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" placeholder="Ex: 589">
+          </div>
+
+          <div class="space-y-1.5 sm:col-span-12">
+            <label class="text-xs font-semibold text-gray-400">Complemento / Ponto de Referência</label>
+            <input type="text" id="cust-complement" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" placeholder="Ex: Ap 12 bloco B / Próximo ao mercado">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MODO DE PAGAMENTO -->
+      <div class="space-y-4">
+        <h4 class="text-sm font-black text-brand-orange uppercase tracking-wider">3. Escolha o Método de Pagamento</h4>
+        
+        <div class="grid grid-cols-3 gap-3">
+          <!-- Pix -->
+          <label class="bg-brand-card border-2 border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none" id="pay-pix-card">
+            <input type="radio" name="payment-method" value="pix" checked class="hidden" onchange="selectPayment('pix')">
+            <span class="text-2xl">💸</span>
+            <span class="font-black text-white text-xs">PIX Desconto</span>
+            <span class="text-[10px] text-brand-success font-bold">-R$ 2,00</span>
+          </label>
+
+          <!-- Cartão na entrega -->
+          <label class="bg-brand-card border-2 border-white/10 hover:border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none" id="pay-card-card">
+            <input type="radio" name="payment-method" value="card" class="hidden" onchange="selectPayment('card')">
+            <span class="text-2xl">💳</span>
+            <span class="font-black text-white text-xs">Cartão Maquininha</span>
+          </label>
+
+          <!-- Dinheiro -->
+          <label class="bg-brand-card border-2 border-white/10 hover:border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none" id="pay-cash-card">
+            <input type="radio" name="payment-method" value="cash" class="hidden" onchange="selectPayment('cash')">
+            <span class="text-2xl">💵</span>
+            <span class="font-black text-white text-xs">Dinheiro</span>
+          </label>
+        </div>
+
+        <!-- Opções Dinâmicas de Pagamento -->
+        <div id="payment-options-box" class="pt-3">
+          <!-- Pix Info -->
+          <div id="payment-box-pix" class="text-xs bg-brand-success/15 border border-brand-success/30 text-brand-success p-4 rounded-xl font-bold flex items-center gap-2">
+            <span>🎁</span>
+            <span>Excelente escolha! Pagando via PIX você economiza R$ 2,00 na hora! O código para pagamento será exibido no próximo passo.</span>
+          </div>
+
+          <!-- Card Selector -->
+          <div id="payment-box-card" class="space-y-1.5 hidden">
+            <label class="text-xs font-semibold text-gray-400">Bandeira / Tipo do Cartão</label>
+            <select id="cust-card-type" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition">
+              <option value="Visa Credito">Visa Crédito</option>
+              <option value="Master Credito">MasterCard Crédito</option>
+              <option value="Elo Credito">Elo Crédito</option>
+              <option value="Hipercard">Hipercard</option>
+              <option value="Visa Debito">Visa Débito</option>
+              <option value="Master Debito">MasterCard Débito</option>
+              <option value="Sodexo Refeicao">Sodexo Refeição</option>
+              <option value="VR Refeicao">VR Refeição</option>
+            </select>
+          </div>
+
+          <!-- Cash Change -->
+          <div id="payment-box-cash" class="space-y-1.5 hidden">
+            <label class="text-xs font-semibold text-gray-400">Precisa de troco para quanto?</label>
+            <input type="number" id="cust-cash-change" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange transition" placeholder="Ex: 100">
+          </div>
+        </div>
+      </div>
+
+      <!-- TERMOS DE LGPD -->
+      <label class="flex items-start gap-3 bg-brand-card/40 border border-white/5 p-4 rounded-2xl cursor-pointer">
+        <input type="checkbox" required checked class="text-brand-orange focus:ring-0 rounded mt-0.5">
+        <span class="text-[11px] text-gray-400 leading-relaxed font-semibold">
+          Autorizo a Pizzaria NAPIER a utilizar meus dados para processamento e entrega deste pedido, em estrita conformidade com a Lei Geral de Proteção de Dados (LGPD).
+        </span>
+      </label>
+
+      <!-- BOTÃO SUBMIT FINAL -->
+      <button type="submit" class="w-full bg-gradient-to-r from-brand-success to-emerald-600 hover:to-brand-success text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 transition shadow-lg glow-green uppercase text-lg">
+        <span>🟢 Confirmar Pedido no WhatsApp</span>
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- MODAL PIX COPIA E COLA E QR CODE DINÂMICO -->
+<div id="pix-modal" class="fixed inset-0 bg-brand-dark/95 z-50 flex items-center justify-center p-4 backdrop-blur-md hidden transition-all duration-300">
+  <div class="bg-brand-panel border border-white/10 rounded-3xl w-full max-w-md p-6 space-y-6 shadow-2xl text-center relative">
+    
+    <button onclick="togglePixModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 bg-brand-panel hover:bg-brand-panel/80 rounded-full border border-white/5 transition">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+
+    <div class="space-y-2">
+      <span class="text-4xl inline-block animate-bounce">⚡</span>
+      <h3 class="text-2xl font-black font-outfit text-white">Seu PIX está Pronto!</h3>
+      <p class="text-xs text-gray-400">Pague agora para acelerar a produção de sua pizza!</p>
+    </div>
+
+    <!-- QR Code Simulado -->
+    <div class="bg-white p-4 rounded-2xl max-w-[200px] mx-auto shadow-inner border-2 border-brand-orange/20 relative group">
+      <div class="absolute inset-0 bg-brand-success/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+        <span class="bg-brand-success text-white text-[10px] px-2 py-1 rounded font-black tracking-wider uppercase">Escaneie no App</span>
+      </div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020101021226830014br.gov.bcb.pix2561pix.pizzarianapier.com.br5802BR5915PizzariaNapier6003SJP62070503***6304" alt="PIX QR Code" class="w-full aspect-square object-contain">
+    </div>
+
+    <!-- Copia e Cola String -->
+    <div class="space-y-2">
+      <span class="text-xs font-bold text-gray-400 block text-left">Código Copia e Cola:</span>
+      <div class="flex gap-2">
+        <input type="text" readonly id="pix-copy-input" class="flex-1 bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-xs text-gray-400 select-all focus:outline-none" value="00020101021226830014br.gov.bcb.pix2561pix.pizzarianapier.com.br5802BR5915PizzariaNapier6003SJP62070503***6304">
+        <button onclick="copyPixCode()" class="bg-brand-orange hover:bg-brand-orange/80 text-white font-black px-4 rounded-xl transition text-xs flex items-center justify-center gap-1.5 whitespace-nowrap glow-orange">
+          <span>Copiar</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="text-xs text-gray-400 font-medium">
+      <p class="text-brand-success">✓ Desconto de R$ 2,00 aplicado com sucesso!</p>
+      <p class="mt-2">Clique no botão fechar se já pagou ou após copiar. Seu pedido já foi enviado ao nosso WhatsApp!</p>
+    </div>
+
+    <button onclick="closePixModalAndFinish()" class="w-full bg-brand-card hover:bg-brand-card/80 border border-white/10 text-white font-bold py-3.5 rounded-xl transition uppercase text-sm">
+      Entendi, Já Realizei o Pagamento!
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-brand-panel border-t border-white/5 py-16 text-gray-400 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12 relative z-10">
+    
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <img src="logonapier.png" alt="NAPIER Logo" class="h-10 w-auto object-contain">
+      </div>
+      <p class="text-sm leading-relaxed">
+        A melhor pizzaria de São José dos Pinhais (SJP). Ingredientes premium, massa de fermentação lenta e muito amor em cada fatia.
+      </p>
+      <p class="text-xs text-gray-500">
+        © 2026 Pizzaria NAPIER. CNPJ: 00.000.000/0001-00.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      <h4 class="text-white font-bold font-outfit tracking-wide">📍 Onde Estamos</h4>
+      <p class="text-sm leading-relaxed">
+        Av. Castro Alves, 589<br>
+        Boneca do Iguaçu - São José dos Pinhais / PR
+      </p>
+      <a href="https://maps.google.com" target="_blank" class="text-xs text-brand-orange hover:underline font-bold inline-block">Visualizar no Maps →</a>
+    </div>
+
+    <div class="space-y-4">
+      <h4 class="text-white font-bold font-outfit tracking-wide">🕒 Nosso Horário</h4>
+      <p class="text-sm leading-relaxed">
+        Terça a Domingo<br>
+        18:00 às 23:30
+      </p>
+      <span class="bg-brand-success/15 border border-brand-success/30 text-brand-success px-3 py-1.5 rounded-full text-xs font-bold inline-block">
+        Segunda-feira: Fechado
+      </span>
+    </div>
+
+    <div class="space-y-4">
+      <h4 class="text-white font-bold font-outfit tracking-wide">💳 Aceitamos na Entrega</h4>
+      <p class="text-sm leading-relaxed">
+        Pix, Cartões de Crédito e Débito (Visa, Master, Elo, Hipercard, Sodexo e VR).
+      </p>
+      <div class="text-[10px] text-gray-600 uppercase font-bold tracking-wider">
+        Seus dados de entrega estão protegidos nos limites da LGPD.
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- SYSTEM JAVASCRIPT STATE ENGINE -->
+<script>
+  // 30 SABORES INCORPORADOS PARA MÁXIMA RESILIÊNCIA CONTRA CORS (FILE:// PROTOCOLO)
+  const FLAVORS_DATABASE = [
+    { "id": "alho_oleo_tradicional", "name": "Alho e Óleo Tradicional", "category": "alho_oleo", "description": "Molho de tomate artesanal, alho frito dourado, azeite de oliva extra virgem e orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "alho_oleo_bacon", "name": "Alho e Óleo com Bacon", "category": "alho_oleo", "description": "Mussarela especial, alho frito dourado, bacon crocante em cubos e orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "alho_oleo_parmesao", "name": "Alho, Óleo e Parmesão", "category": "alho_oleo", "description": "Alho frito crocante, parmesão ralado gratinado, azeite de oliva e orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "calabresa", "name": "Calabresa Especial", "category": "classicas", "description": "Mussarela, calabresa defumada fatiada de alta qualidade, cebola fresca e orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "mussarela", "name": "Mussarela Clássica", "category": "classicas", "description": "Mussarela de búfala cremosa, rodelas de tomate fresco, azeite e orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "marguerita", "name": "Marguerita Gourmet", "category": "classicas", "description": "Mussarela, rodelas de tomate, folhas de manjericão fresco, parmesão e azeite.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "portuguesa", "name": "Portuguesa Tradicional", "category": "classicas", "description": "Presunto cozido, ovos, cebola roxa, ervilha fresca, azeitonas pretas e mussarela.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "frango_catupiry", "name": "Frango com Catupiry", "category": "classicas", "description": "Frango desfiado temperado com ervas finas e requeijão cremoso tipo Catupiry.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "napolitana", "name": "Napolitana", "category": "classicas", "description": "Mussarela, rodelas de tomate fresco, alho frito crocante e queijo parmesão gratinado.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "presunto_queijo", "name": "Presunto e Queijo", "category": "classicas", "description": "Mussarela selecionada, presunto cozido em cubos temperados e um toque de orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "milho_requeijao", "name": "Milho com Requeijão", "category": "classicas", "description": "Mussarela, milho verde cozido no vapor e requeijão cremoso de alta qualidade.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "palmito", "name": "Palmito Especial", "category": "classicas", "description": "Mussarela, palmito picado premium super macio e orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "bacon_cheddar", "name": "Bacon com Cheddar", "category": "especiais", "description": "Mussarela, bacon crocante em cubos selecionados e queijo cheddar cremoso.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "lombo_defumado", "name": "Lombo Defumado", "category": "especiais", "description": "Mussarela, lombo defumado fatiado, cebola roxa e requeijão cremoso.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "quatro_queijos", "name": "Quatro Queijos", "category": "especiais", "description": "Mussarela, requeijão cremoso, queijo provolone defumado e parmesão ralado.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "cinco_queijos", "name": "Cinco Queijos", "category": "especiais", "description": "Mussarela, requeijão cremoso, provolone defumado, queijo gorgonzola e parmesão.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "rucula_tomate_seco", "name": "Rúcula com Tomate Seco", "category": "especiais", "description": "Mussarela, rúcula fresca selecionada e tomates secos artesanais com azeite.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "pepperoni", "name": "Pepperoni Premium", "category": "especiais", "description": "Mussarela, fatias crocantes de pepperoni condimentado e um toque de orégano.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "frango_cheddar", "name": "Frango com Cheddar", "category": "especiais", "description": "Frango desfiado temperado com cheddar cremoso e milho verde cozido.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "mexicana", "name": "Mexicana Apimentada", "category": "especiais", "description": "Mussarela, calabresa moída picante, pimenta calabresa em flocos e pimentão verde.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "strogonoff_carne", "name": "Strogonoff de Carne", "category": "especiais", "description": "Iscas de filé bovino ao molho de strogonoff cremoso, mussarela e batata palha fina.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "suprema", "name": "Suprema Napier", "category": "especiais", "description": "Mussarela, bacon crocante, calabresa defumada, presunto cozido e cebola roxa.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "brocolis_catupiry", "name": "Brócolis com Catupiry", "category": "vegetarianas", "description": "Brócolis fresco temperado no alho, mussarela e requeijão cremoso tipo Catupiry.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "abobrinha_grelhada", "name": "Abobrinha Grelhada", "category": "vegetarianas", "description": "Abobrinha italiana fatiada e grelhada, mussarela, parmesão ralado e manjericão.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "escarola", "name": "Escarola Especial", "category": "vegetarianas", "description": "Escarola fresca refogada no alho, cebola, azeite de oliva e queijo mussarela.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "tres_cogumelos", "name": "Três Cogumelos", "category": "vegetarianas", "description": "Cogumelos Shimeji, Paris e Champignon salteados na manteiga de ervas e mussarela.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "brigadeiro_gourmet", "name": "Brigadeiro Gourmet", "category": "doces", "description": "Chocolate cremoso ao leite gourmet com granulado de chocolate belga.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "romeu_julieta", "name": "Romeu e Julieta", "category": "doces", "description": "Queijo mussarela especial coberto com goiabada cremosa artesanal cascão.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "prestigio", "name": "Prestígio", "category": "doces", "description": "Chocolate ao leite cremoso coberto com coco ralado úmido e leite condensado.", "priceBroto": 28.90, "priceGrande": 38.90 },
+    { "id": "banana_canela", "name": "Banana com Canela", "category": "doces", "description": "Leite condensado cremoso, bananas frescas fatiadas, açúcar refinado e canela em pó.", "priceBroto": 28.90, "priceGrande": 38.90 }
+  ];
+
+  // VARIÁVEIS DE ESTADO GLOBAL
+  let cart = [];
+  let storeOpen = true;
+  let deliveryType = 'entrega'; // 'entrega' ou 'retirada'
+  let activeCategory = 'all';
+  let shippingFee = 5.00;
+  let paymentMethod = 'pix';
+
+  // ESTADO DO CONFIGURADOR MODAL
+  let customizerState = {
+    isCombo: false,
+    comboType: '',
+    size: 'grande', // 'grande' ou 'broto'
+    selectedFlavor1: 'calabresa',
+    selectedFlavor2: 'portuguesa',
+    crust: 'tradicional'
+  };
+
+  // INICIALIZAÇÃO DA APLICAÇÃO
+  window.addEventListener('DOMContentLoaded', () => {
+    // Carregar carrinho salvo
+    const savedCart = localStorage.getItem('napier_cart');
+    if (savedCart) {
+      try {
+        cart = JSON.parse(savedCart);
+        updateCartBadgeAndList();
+      } catch(e) {
+        cart = [];
+      }
+    }
+
+    // Carregar dados de entrega salvos
+    const savedName = localStorage.getItem('napier_cust_name');
+    const savedPhone = localStorage.getItem('napier_cust_phone');
+    if (savedName) document.getElementById('cust-name').value = savedName;
+    if (savedPhone) document.getElementById('cust-phone').value = savedPhone;
+
+    // Verificar e renderizar elementos iniciais
+    validateStoreHours();
+    renderFlavorsMenu();
+    populateSelectBoxes();
+    calculateDynamicShipping();
+  });
+
+  // VERIFICADOR DE HORÁRIO DE FUNCIONAMENTO (TER-DOM 18:00 - 23:30)
+  function validateStoreHours() {
+    const now = new Date();
+    const day = now.getDay(); // 0: Domingo, 1: Segunda, 2: Terça...
+    const hour = now.getHours();
+    const minutes = now.getMinutes();
+    
+    const timeVal = hour * 60 + minutes;
+    const openTimeVal = 18 * 60; // 18:00
+    const closeTimeVal = 23 * 60 + 30; // 23:30
+
+    // Fechado Segunda-feira (1)
+    const isCorrectDay = day !== 1;
+    const isCorrectTime = timeVal >= openTimeVal && timeVal <= closeTimeVal;
+
+    const banner = document.getElementById('store-banner');
+    const statusText = document.getElementById('store-status-text');
+    const dot = document.getElementById('store-dot');
+
+    if (isCorrectDay && isCorrectTime) {
+      storeOpen = true;
+      banner.className = "bg-brand-success text-white py-2.5 px-4 text-center font-bold text-sm sticky top-0 z-50 shadow-md flex justify-center items-center gap-2 transition-all duration-300";
+      statusText.innerHTML = "🟢 ABERTO AGORA - Faça o seu pedido com entrega rápida em SJP!";
+      dot.className = "inline-block w-2.5 h-2.5 rounded-full bg-white animate-pulse";
+    } else {
+      storeOpen = false;
+      banner.className = "bg-amber-600 text-white py-2.5 px-4 text-center font-bold text-sm sticky top-0 z-50 shadow-md flex justify-center items-center gap-2 transition-all duration-300";
+      statusText.innerHTML = "🔴 FECHADO NO MOMENTO - Nosso horário é Ter-Dom 18:00 às 23:30. Aproveite para planejar/simular seu pedido!";
+      dot.className = "inline-block w-2.5 h-2.5 rounded-full bg-white";
+    }
+  }
+
+  // RENDERIZADOR DO CARDÁPIO DE SABORES
+  function renderFlavorsMenu() {
+    const grid = document.getElementById('flavors-grid');
+    grid.innerHTML = '';
+
+    const filtered = activeCategory === 'all' 
+      ? FLAVORS_DATABASE 
+      : FLAVORS_DATABASE.filter(f => f.category === activeCategory);
+
+    filtered.forEach(flavor => {
+      const card = document.createElement('div');
+      card.className = "bg-brand-card hover:bg-brand-card/90 border border-white/5 hover:border-brand-orange/30 p-6 rounded-3xl shadow-xl flex flex-col justify-between transition-all duration-300 hover:scale-[1.01] relative group";
+      
+      card.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex justify-between items-start gap-4">
+            <h3 class="text-xl font-black font-outfit text-white tracking-wide group-hover:text-brand-orange transition duration-300">
+              ${flavor.name}
+            </h3>
+            <span class="bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-[10px] px-2 py-1 rounded font-black uppercase tracking-widest whitespace-nowrap">
+              ${getCategoryLabel(flavor.category)}
+            </span>
+          </div>
+          
+          <p class="text-sm text-gray-400 leading-relaxed min-h-[4rem]">
+            ${flavor.description}
+          </p>
+        </div>
+
+        <div class="mt-6 space-y-4">
+          <div class="flex items-baseline justify-between">
+            <span class="text-xs text-gray-500 font-semibold uppercase">Preço Broto</span>
+            <span class="text-3xl font-black text-brand-yellow font-outfit">R$ ${flavor.priceBroto.toFixed(2).replace('.', ',')}</span>
+          </div>
+          
+          <button onclick="openPizzaCustomizer('${flavor.id}')" class="w-full bg-brand-panel hover:bg-brand-orange text-gray-300 hover:text-white border border-white/10 hover:border-transparent py-3.5 rounded-2xl font-black text-sm transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-brand-orange group-hover:text-white glow-orange">
+            <span>Configurar e Adicionar</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+          </button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // RETORNA LABEL DA CATEGORIA
+  function getCategoryLabel(cat) {
+    const mapping = {
+      'alho_oleo': '🧄 Alho e Óleo',
+      'classicas': '🍕 Clássica',
+      'especiais': '⭐ Especial',
+      'vegetarianas': '🥦 Veggie',
+      'doces': '🍫 Doce'
+    };
+    return mapping[cat] || 'Pizza';
+  }
+
+  // FILTRA CATEGORIA COM ABAS ATIVAS
+  function filterCategory(cat) {
+    activeCategory = cat;
+    document.querySelectorAll('.category-tab').forEach(tab => {
+      tab.className = "category-tab bg-brand-card hover:bg-brand-card/80 border border-white/5 text-gray-400 font-bold px-6 py-3 rounded-full transition whitespace-nowrap";
+    });
+
+    const activeTab = document.getElementById(`tab-${cat}`);
+    if (activeTab) {
+      activeTab.className = "category-tab bg-brand-orange text-white font-bold px-6 py-3 rounded-full transition shadow-md whitespace-nowrap";
+    }
+    renderFlavorsMenu();
+  }
+
+  // POPULA CAIXAS DE SELEÇÃO DO CONFIGURADOR (MODAL)
+  function populateSelectBoxes() {
+    const s1 = document.getElementById('select-flavor-1');
+    const s2 = document.getElementById('select-flavor-2');
+
+    s1.innerHTML = '';
+    s2.innerHTML = '';
+
+    FLAVORS_DATABASE.forEach(f => {
+      const opt = `<option value="${f.id}">${f.name} (R$ 28,90)</option>`;
+      s1.insertAdjacentHTML('beforeend', opt);
+      s2.insertAdjacentHTML('beforeend', opt);
+    });
+  }
+
+  // CONTROLA EXIBIÇÃO DO CONFIGURADOR MODAL
+  function toggleConfigModal(show) {
+    const modal = document.getElementById('config-modal');
+    if (show) {
+      modal.classList.remove('hidden');
+      updatePizzaVisuals();
+      updatePizzaPrice();
+    } else {
+      modal.classList.add('hidden');
+    }
+  }
+
+  // MUDANÇA DE TAMANHO
+  function onSizeChange(size) {
+    customizerState.size = size;
+    const brotoCard = document.getElementById('size-broto-card');
+    const grandeCard = document.getElementById('size-grande-card');
+    const wrapperFlavor2 = document.getElementById('wrapper-flavor-2');
+    const labelFlavor1 = document.getElementById('label-flavor-1');
+
+    if (size === 'broto') {
+      brotoCard.className = "relative bg-brand-card hover:bg-brand-card/80 border-2 border-brand-orange rounded-2xl p-4 cursor-pointer flex justify-between items-center transition select-none";
+      grandeCard.className = "relative bg-brand-card hover:bg-brand-card/80 border-2 border-white/10 rounded-2xl p-4 cursor-pointer flex justify-between items-center transition select-none";
+      wrapperFlavor2.classList.add('hidden');
+      labelFlavor1.innerHTML = "Escolha o Sabor Principal";
+    } else {
+      grandeCard.className = "relative bg-brand-card hover:bg-brand-card/80 border-2 border-brand-orange rounded-2xl p-4 cursor-pointer flex justify-between items-center transition select-none";
+      brotoCard.className = "relative bg-brand-card hover:bg-brand-card/80 border-2 border-white/10 rounded-2xl p-4 cursor-pointer flex justify-between items-center transition select-none";
+      wrapperFlavor2.classList.remove('hidden');
+      labelFlavor1.innerHTML = "Sabor Metade 1 (Esquerda)";
+    }
+
+    updatePizzaVisuals();
+    updatePizzaPrice();
+  }
+
+  // ATUALIZA ELEMENTOS VISUAIS DA PIZZA NO MODAL (INTERATIVIDADE PREMIUM)
+  function updatePizzaVisuals() {
+    const size = customizerState.size;
+    const f1 = document.getElementById('select-flavor-1').value;
+    const f2 = document.getElementById('select-flavor-2').value;
+
+    const summarySize = document.getElementById('pizza-summary-size');
+    const summaryFlavors = document.getElementById('pizza-summary-flavors');
+    const halfLeft = document.getElementById('visual-half-left');
+    const halfRight = document.getElementById('visual-half-right');
+
+    const flavor1Obj = FLAVORS_DATABASE.find(f => f.id === f1);
+    const flavor2Obj = FLAVORS_DATABASE.find(f => f.id === f2);
+
+    if (size === 'broto') {
+      summarySize.innerHTML = "Tamanho Broto (30cm)";
+      summaryFlavors.innerHTML = `Sabor: <span class="text-white font-bold">${flavor1Obj ? flavor1Obj.name : ''}</span>`;
+      halfLeft.classList.add('hidden');
+      halfRight.classList.add('hidden');
+    } else {
+      summarySize.innerHTML = "Tamanho Grande (35cm)";
+      if (f1 === f2) {
+        summaryFlavors.innerHTML = `Sabor Inteiro: <span class="text-white font-bold">${flavor1Obj ? flavor1Obj.name : ''}</span>`;
+        halfLeft.classList.add('hidden');
+        halfRight.classList.add('hidden');
+      } else {
+        summaryFlavors.innerHTML = `Esq: <span class="text-brand-orange font-bold">${flavor1Obj ? flavor1Obj.name : ''}</span> | Dir: <span class="text-brand-yellow font-bold">${flavor2Obj ? flavor2Obj.name : ''}</span>`;
+        halfLeft.classList.remove('hidden');
+        halfRight.classList.remove('hidden');
+      }
+    }
+  }
+
+  // CALCULA O PREÇO EM TEMPO REAL NO MODAL
+  function updatePizzaPrice() {
+    const size = customizerState.size;
+    const crustVal = document.querySelector('input[name="pizza-crust"]:checked').value;
+
+    let basePrice = size === 'broto' ? 28.90 : 38.90;
+    let crustPrice = 0;
+
+    if (crustVal === 'requeijao' || crustVal === 'cheddar') crustPrice = 12.90;
+    if (crustVal === 'chocolate' || crustVal === 'doce_leite') crustPrice = 13.90;
+
+    const total = basePrice + crustPrice;
+    document.getElementById('modal-total-price').innerHTML = `R$ ${total.toFixed(2).replace('.', ',')}`;
+  }
+
+  // ATIVA MODAL DO ZERO PARA PIZZA DE MENU
+  function openPizzaCustomizer(flavorId) {
+    customizerState.isCombo = false;
+    customizerState.comboType = '';
+    customizerState.size = 'grande';
+    document.querySelector('input[name="pizza-size"][value="grande"]').checked = true;
+    onSizeChange('grande');
+
+    document.getElementById('select-flavor-1').value = flavorId;
+    document.getElementById('select-flavor-2').value = flavorId;
+    
+    // Reset crust
+    document.querySelector('input[name="pizza-crust"][value="tradicional"]').checked = true;
+    
+    document.getElementById('modal-title').innerHTML = "Personalizar sua Pizza";
+    
+    toggleConfigModal(true);
+  }
+
+  // ATIVA MODAL PARA COMBOS ESPECIAIS (CRO)
+  function openComboCustomizer(comboType) {
+    customizerState.isCombo = true;
+    customizerState.comboType = comboType;
+    customizerState.size = 'grande'; // Combos são sempre com pizzas grandes
+    
+    document.querySelector('input[name="pizza-size"][value="grande"]').checked = true;
+    onSizeChange('grande');
+
+    // Desabilitar escolha de tamanho no combo (Combos são sempre grandes)
+    document.querySelector('input[name="pizza-size"][value="broto"]').disabled = true;
+    
+    // Reset crust
+    document.querySelector('input[name="pizza-crust"][value="tradicional"]').checked = true;
+
+    if (comboType === 'combo1') {
+      document.getElementById('modal-title').innerHTML = "Configurar Pizza do Combo Econômico";
+    } else {
+      document.getElementById('modal-title').innerHTML = "Configurar Pizzas do Combo Família";
+    }
+
+    toggleConfigModal(true);
+  }
+
+  // ADICIONA PRODUTO CONFIGURADO AO CARRINHO DE ESTADO
+  function addCustomPizzaToCart() {
+    const size = customizerState.size;
+    const f1 = document.getElementById('select-flavor-1').value;
+    const f2 = document.getElementById('select-flavor-2').value;
+    const crustVal = document.querySelector('input[name="pizza-crust"]:checked').value;
+
+    const flavor1Obj = FLAVORS_DATABASE.find(f => f.id === f1);
+    const flavor2Obj = FLAVORS_DATABASE.find(f => f.id === f2);
+
+    let basePrice = size === 'broto' ? 28.90 : 38.90;
+    let crustPrice = 0;
+    if (crustVal === 'requeijao' || crustVal === 'cheddar') crustPrice = 12.90;
+    if (crustVal === 'chocolate' || crustVal === 'doce_leite') crustPrice = 13.90;
+
+    let itemPrice = basePrice + crustPrice;
+    let title = "";
+    let desc = "";
+
+    if (customizerState.isCombo) {
+      if (customizerState.comboType === 'combo1') {
+        itemPrice = 49.90; // Preço fixo da promoção
+        title = "🎁 Combo Econômico: Pizza Grande + Coca-Cola 2L";
+      } else {
+        itemPrice = 69.90; // Preço fixo da promoção
+        title = "👪 Combo Família: 2 Pizzas Grandes + Kuat 2L";
+      }
+    } else {
+      title = `Pizza ${size === 'broto' ? 'Broto (30cm)' : 'Grande (35cm)'}`;
+    }
+
+    if (size === 'broto') {
+      desc = `Sabor: ${flavor1Obj.name}`;
+    } else {
+      if (f1 === f2) {
+        desc = `Sabor: ${flavor1Obj.name}`;
+      } else {
+        desc = `Meio-a-Meio: (1/2 ${flavor1Obj.name} e 1/2 ${flavor2Obj.name})`;
+      }
+    }
+
+    const crustNames = {
+      'tradicional': 'Massa Tradicional (Sem Borda)',
+      'requeijao': 'Borda Recheada de Requeijão (+R$ 12,90)',
+      'cheddar': 'Borda Recheada de Cheddar (+R$ 12,90)',
+      'chocolate': 'Borda Recheada de Chocolate (+R$ 13,90)',
+      'doce_leite': 'Borda Recheada de Doce de Leite (+R$ 13,90)'
+    };
+
+    desc += ` | Borda: ${crustNames[crustVal]}`;
+
+    // Adiciona no array de carrinho
+    cart.push({
+      id: Date.now() + Math.random().toString(36).substr(2, 5),
+      title: title,
+      description: desc,
+      price: itemPrice,
+      quantity: 1
+    });
+
+    // Restaurar formulário tamanho
+    document.querySelector('input[name="pizza-size"][value="broto"]').disabled = false;
+
+    // Atualizar UI
+    saveCart();
+    updateCartBadgeAndList();
+    toggleConfigModal(false);
+    
+    // Dar Feedback Visual Elegante
+    showNotification("✨ Adicionado ao carrinho com sucesso!");
+    toggleCartDrawer(true);
+  }
+
+  // MOSTRA POPUP DE NOTIFICAÇÃO SUAVE
+  function showNotification(msg) {
+    const notify = document.createElement('div');
+    notify.className = "fixed bottom-5 right-5 z-[100] bg-brand-orange border border-white/20 text-white font-black px-6 py-4 rounded-2xl shadow-2xl transition duration-300 animate-slide-in flex items-center gap-2 glow-orange";
+    notify.innerHTML = `<span>✓</span> <span>${msg}</span>`;
+    document.body.appendChild(notify);
+    setTimeout(() => {
+      notify.classList.add('opacity-0');
+      setTimeout(() => notify.remove(), 300);
+    }, 2500);
+  }
+
+  // PERSISTE NO LOCALSTORAGE
+  function saveCart() {
+    localStorage.setItem('napier_cart', JSON.stringify(cart));
+  }
+
+  // ATUALIZA TOTALIZADORES E A LISTA DO CARRINHO (DRAWER)
+  function updateCartBadgeAndList() {
+    const badge = document.getElementById('cart-badge-count');
+    const list = document.getElementById('cart-items-list');
+    
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    badge.innerHTML = totalItems;
+
+    if (cart.length === 0) {
+      list.innerHTML = `
+        <div class="flex flex-col items-center justify-center py-20 text-center space-y-4">
+          <span class="text-6xl animate-bounce">🛒</span>
+          <h4 class="text-white font-black font-outfit text-lg">Seu carrinho está vazio</h4>
+          <p class="text-gray-500 text-xs max-w-[200px]">Adicione deliciosas pizzas de nosso cardápio para começar.</p>
+        </div>
+      `;
+      document.getElementById('btn-goto-checkout').disabled = true;
+      document.getElementById('btn-goto-checkout').className = "w-full bg-brand-card text-gray-600 font-bold py-4 rounded-xl flex justify-center items-center gap-2 cursor-not-allowed border border-white/5";
+    } else {
+      list.innerHTML = '';
+      cart.forEach(item => {
+        const row = document.createElement('div');
+        row.className = "bg-brand-card/60 border border-white/5 p-4 rounded-2xl flex flex-col justify-between gap-3 relative";
+        
+        row.innerHTML = `
+          <div class="space-y-1">
+            <h4 class="font-black text-white text-sm leading-tight pr-6">${item.title}</h4>
+            <p class="text-[11px] text-gray-500 font-medium leading-relaxed">${item.description}</p>
+          </div>
+
+          <div class="flex justify-between items-center pt-2 border-t border-white/5">
+            <!-- Controle de Quantidade -->
+            <div class="flex items-center gap-2 bg-brand-panel px-2.5 py-1 rounded-full border border-white/5">
+              <button onclick="changeQty('${item.id}', -1)" class="text-gray-400 hover:text-white font-black text-xs px-1">-</button>
+              <span class="text-white font-bold text-xs">${item.quantity}</span>
+              <button onclick="changeQty('${item.id}', 1)" class="text-gray-400 hover:text-white font-black text-xs px-1">+</button>
+            </div>
+            
+            <div class="text-right">
+              <p class="text-xs text-gray-500 font-semibold">Preço total</p>
+              <p class="text-base font-black text-brand-yellow font-outfit">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</p>
+            </div>
+          </div>
+
+          <!-- Botão Deletar no Canto Superior -->
+          <button onclick="removeItem('${item.id}')" class="absolute top-4 right-4 text-gray-500 hover:text-brand-red transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+          </button>
+        `;
+        list.appendChild(row);
+      });
+
+      document.getElementById('btn-goto-checkout').disabled = false;
+      document.getElementById('btn-goto-checkout').className = "w-full bg-gradient-to-r from-brand-orange to-brand-red hover:to-brand-orange text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 transition glow-orange";
+    }
+
+    calculateTotalSummary();
+  }
+
+  // MUDANÇA QUANTIDADE ITENS DO CARRINHO
+  function changeQty(itemId, amount) {
+    const item = cart.find(i => i.id === itemId);
+    if (item) {
+      item.quantity += amount;
+      if (item.quantity <= 0) {
+        removeItem(itemId);
+        return;
+      }
+      saveCart();
+      updateCartBadgeAndList();
+    }
+  }
+
+  // REMOVER ITEM
+  function removeItem(itemId) {
+    cart = cart.filter(i => i.id !== itemId);
+    saveCart();
+    updateCartBadgeAndList();
+  }
+
+  // ABRIR/FECHAR DRAWER LATERAL DO CARRINHO
+  function toggleCartDrawer(show) {
+    const drawer = document.getElementById('cart-drawer');
+    if (show) {
+      drawer.classList.remove('hidden');
+    } else {
+      drawer.classList.add('hidden');
+    }
+  }
+
+  // DEFINE ENTREGA OU RETIRADA E CALCULA
+  function setDeliveryType(type) {
+    deliveryType = type;
+    const btnEntrega = document.getElementById('btn-delivery-entrega');
+    const btnRetirada = document.getElementById('btn-delivery-retirada');
+    const rowShipping = document.getElementById('shipping-row');
+    const checkoutAddressWrapper = document.getElementById('address-fields-wrapper');
+
+    if (type === 'entrega') {
+      btnEntrega.className = "py-2.5 rounded-lg text-sm font-black transition uppercase bg-brand-orange text-white";
+      btnRetirada.className = "py-2.5 rounded-lg text-sm font-black transition uppercase text-gray-400 hover:text-white";
+      rowShipping.classList.remove('hidden');
+      checkoutAddressWrapper.classList.remove('hidden');
+    } else {
+      btnRetirada.className = "py-2.5 rounded-lg text-sm font-black transition uppercase bg-brand-orange text-white";
+      btnEntrega.className = "py-2.5 rounded-lg text-sm font-black transition uppercase text-gray-400 hover:text-white";
+      rowShipping.classList.add('hidden');
+      checkoutAddressWrapper.classList.add('hidden');
+    }
+
+    calculateTotalSummary();
+  }
+
+  // SELETOR DINÂMICO DE BAIRRO
+  function calculateDynamicShipping() {
+    if (deliveryType === 'retirada') {
+      shippingFee = 0;
+      return;
+    }
+
+    const b = document.getElementById('cust-neighborhood').value;
+    const mapFees = {
+      'boneca_iguacu': 5.00,
+      'centro': 6.50,
+      'afonso_pena': 7.00,
+      'guatupe': 8.50,
+      'outros': 10.00
+    };
+
+    shippingFee = mapFees[b] || 5.00;
+    calculateTotalSummary();
+  }
+
+  // TOTALIZADOR DA FATURA
+  function calculateTotalSummary() {
+    let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let shipping = deliveryType === 'entrega' ? shippingFee : 0;
+    let discount = paymentMethod === 'pix' && subtotal > 0 ? 2.00 : 0;
+    
+    let total = subtotal + shipping - discount;
+    if (total < 0) total = 0;
+
+    document.getElementById('cart-summary-subtotal').innerHTML = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+    document.getElementById('cart-summary-shipping').innerHTML = `R$ ${shipping.toFixed(2).replace('.', ',')}`;
+    document.getElementById('cart-summary-discount').innerHTML = `-R$ ${discount.toFixed(2).replace('.', ',')}`;
+    document.getElementById('cart-summary-total').innerHTML = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+    // Exibir desconto condicional
+    const discRow = document.getElementById('discount-row');
+    if (discount > 0) {
+      discRow.classList.remove('hidden');
+    } else {
+      discRow.classList.add('hidden');
+    }
+  }
+
+  // ABRIR GAVETA DE DETALHES DO PEDIDO (CHECKOUT MODAL)
+  function openCheckoutSection() {
+    toggleCartDrawer(false);
+    toggleCheckoutModal(true);
+  }
+
+  function toggleCheckoutModal(show) {
+    const modal = document.getElementById('checkout-modal');
+    if (show) {
+      modal.classList.remove('hidden');
+      calculateDynamicShipping();
+    } else {
+      modal.classList.add('hidden');
+    }
+  }
+
+  // CONTROLA SELEÇÃO DO MÉTODO DE PAGAMENTO (CORES DE ACENTO)
+  function selectPayment(method) {
+    paymentMethod = method;
+    const pPix = document.getElementById('pay-pix-card');
+    const pCard = document.getElementById('pay-card-card');
+    const pCash = document.getElementById('pay-cash-card');
+
+    const bPix = document.getElementById('payment-box-pix');
+    const bCard = document.getElementById('payment-box-card');
+    const bCash = document.getElementById('payment-box-cash');
+
+    // Reset styles
+    pPix.className = "bg-brand-card border-2 border-white/10 hover:border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none";
+    pCard.className = "bg-brand-card border-2 border-white/10 hover:border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none";
+    pCash.className = "bg-brand-card border-2 border-white/10 hover:border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none";
+
+    bPix.classList.add('hidden');
+    bCard.classList.add('hidden');
+    bCash.classList.add('hidden');
+
+    if (method === 'pix') {
+      pPix.className = "bg-brand-card border-2 border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none";
+      bPix.classList.remove('hidden');
+    } else if (method === 'card') {
+      pCard.className = "bg-brand-card border-2 border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none";
+      bCard.classList.remove('hidden');
+    } else {
+      pCash.className = "bg-brand-card border-2 border-brand-orange rounded-2xl p-4 cursor-pointer flex flex-col items-center justify-center gap-2 text-center transition select-none";
+      bCash.classList.remove('hidden');
+    }
+
+    calculateTotalSummary();
+  }
+
+  // MÁSCARA AUTOMÁTICA DE WHATSAPP
+  function formatWhatsApp(input) {
+    let value = input.value.replace(/\D/g, "");
+    if (value.length > 11) value = value.substring(0, 11);
+    
+    let formatted = "";
+    if (value.length > 0) {
+      formatted += "(" + value.substring(0, 2);
+    }
+    if (value.length > 2) {
+      formatted += ") " + value.substring(2, 7);
+    }
+    if (value.length > 7) {
+      formatted += "-" + value.substring(7, 11);
+    }
+    
+    input.value = formatted;
+  }
+
+  // CONTROLA EXIBIÇÃO DO MODAL DO PIX
+  function togglePixModal(show) {
+    const modal = document.getElementById('pix-modal');
+    if (show) {
+      modal.classList.remove('hidden');
+    } else {
+      modal.classList.add('hidden');
+    }
+  }
+
+  // COPIA O CÓDIGO DO PIX
+  function copyPixCode() {
+    const input = document.getElementById('pix-copy-input');
+    input.select();
+    input.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    showNotification("📋 Código Pix Copiado!");
+  }
+
+  // ENCERRA FLUXO PIX E LIMPA CARRINHO
+  function closePixModalAndFinish() {
+    togglePixModal(false);
+    clearCartAndReset();
+  }
+
+  function clearCartAndReset() {
+    cart = [];
+    saveCart();
+    updateCartBadgeAndList();
+    toggleCheckoutModal(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // SANITIZADOR DE DADOS E ENVIO DO PEDIDO (WHATSAPP AUTOMATION)
+  function submitOrder(e) {
+    e.preventDefault();
+
+    // Bloqueio amigável se a loja estiver fechada (CRO)
+    if (!storeOpen) {
+      if (!confirm("⚠️ Atenção: A pizzaria está FECHADA no momento (Funcionamos de Ter-Dom das 18:00 às 23:30). Deseja enviar o pedido no WhatsApp mesmo assim para pré-agendamento?")) {
+        return;
+      }
+    }
+
+    // Sanitização e Validação básica
+    const name = document.getElementById('cust-name').value.trim().replace(/[<>]/g, "");
+    const phone = document.getElementById('cust-phone').value.trim();
+    
+    if (name.length < 3) {
+      alert("Por favor, digite seu nome completo.");
+      return;
+    }
+
+    if (phone.length < 14) {
+      alert("Por favor, digite um número de WhatsApp válido.");
+      return;
+    }
+
+    // Persistir dados básicos de contato para a próxima compra (LGPD)
+    localStorage.setItem('napier_cust_name', name);
+    localStorage.setItem('napier_cust_phone', phone);
+
+    let addressStr = "";
+    if (deliveryType === 'entrega') {
+      const street = document.getElementById('cust-street').value.trim().replace(/[<>]/g, "");
+      const number = document.getElementById('cust-number').value.trim().replace(/[<>]/g, "");
+      const complement = document.getElementById('cust-complement').value.trim().replace(/[<>]/g, "");
+      const neighborhoodSelect = document.getElementById('cust-neighborhood');
+      const neighborhoodName = neighborhoodSelect.options[neighborhoodSelect.selectedIndex].text.split(' - ')[0];
+
+      if (!street || !number) {
+        alert("Por favor, preencha a Rua e o Número de entrega.");
+        return;
+      }
+      addressStr = `📍 *Endereço de Entrega:*\n• Rua: ${street}, Nº ${number}\n• Bairro: ${neighborhoodName} (SJP)\n• Comp: ${complement || 'Não informado'}`;
+    } else {
+      addressStr = `🚗 *Método: Retirada no Balcão*\n• Local: Av. Castro Alves, 589 (Boneca do Iguaçu - SJP)\n• Tempo estimado: 35 minutos`;
+    }
+
+    // Construção do Pagamento
+    let payStr = "";
+    let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let shipping = deliveryType === 'entrega' ? shippingFee : 0;
+    let discount = paymentMethod === 'pix' ? 2.00 : 0;
+    let total = subtotal + shipping - discount;
+
+    if (paymentMethod === 'pix') {
+      payStr = `💸 *PIX* (Desconto R$ 2,00 aplicado)`;
+    } else if (paymentMethod === 'card') {
+      const cardType = document.getElementById('cust-card-type').value;
+      payStr = `💳 *Cartão na Entrega* (${cardType})`;
+    } else {
+      const change = document.getElementById('cust-cash-change').value;
+      payStr = `💵 *Dinheiro* (Troco para R$ ${change || 'Não precisa'})`;
+    }
+
+    // Tabulação dos itens
+    let itemsStr = "";
+    cart.forEach((item, idx) => {
+      itemsStr += `\n*${item.quantity}x ${item.title}*\n   _${item.description}_\n   Total: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
+    });
+
+    // COMPILAR INVOICE ESTRUTURADA
+    const message = `🍕 *NOVO PEDIDO - PIZZARIA NAPIER* 🍕\n` +
+      `-------------------------------------------\n\n` +
+      `👤 *Cliente:* ${name}\n` +
+      `📞 *Contato:* ${phone}\n\n` +
+      `-------------------------------------------\n` +
+      `🛒 *Itens do Pedido:*` +
+      `${itemsStr}\n` +
+      `-------------------------------------------\n\n` +
+      `${addressStr}\n\n` +
+      `-------------------------------------------\n` +
+      `💳 *Pagamento:* ${payStr}\n\n` +
+      `💰 *Valores:* \n` +
+      `• Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n` +
+      `• Taxa Entrega: R$ ${shipping.toFixed(2).replace('.', ',')}\n` +
+      `• Desconto PIX: -R$ ${discount.toFixed(2).replace('.', ',')}\n` +
+      `• *Total a Pagar: R$ ${total.toFixed(2).replace('.', ',')}*\n\n` +
+      `-------------------------------------------\n` +
+      `_Preparando com carinho em 35 minutos!_`;
+
+    // Encode URL
+    const encodedMsg = encodeURIComponent(message);
+    const waLink = `https://wa.me/5541988449949?text=${encodedMsg}`;
+
+    // Abrir Link do WhatsApp
+    window.open(waLink, '_blank');
+
+    // Se for PIX, abre o Modal do PIX Copia e Cola para facilidade do cliente, senão encerra
+    if (paymentMethod === 'pix') {
+      toggleCheckoutModal(false);
+      togglePixModal(true);
+    } else {
+      showNotification("🚀 Pedido concluído com sucesso!");
+      clearCartAndReset();
+    }
+  }
+</script>
+
+</body>
+</html>
